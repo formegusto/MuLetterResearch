@@ -4,14 +4,13 @@ from urllib.parse import urlencode
 import math as mt
 
 
-@property
 def get_features(self, target="select"):
     sel_tracks = self.sel_tracks if target == "select" else self.reco_tracks
     features_uri = "https://api.spotify.com/v1/audio-features"
     headers = {
         "authorization": "Bearer {}".format(self.token)
     }
-    cnt = mt.floor((len(self.sel_tracks) - 1) / 100) + 1
+    cnt = mt.floor((len(sel_tracks) - 1) / 100) + 1
 
     features = pd.DataFrame()
     target_cols = ['id', 'danceability', 'energy', 'key', 'loudness', 'speechiness',
@@ -19,7 +18,7 @@ def get_features(self, target="select"):
 
     for _cnt in range(0, cnt):
         ids = ""
-        for track_id in self.sel_tracks[_cnt * 100: (_cnt + 1) * 100]['id']:
+        for track_id in sel_tracks[_cnt * 100: (_cnt + 1) * 100]['id']:
             split_data = track_id.split(",")
 
             for _ in split_data:

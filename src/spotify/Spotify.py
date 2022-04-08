@@ -9,9 +9,11 @@ class Spotify:
     def __init__(self):
         self.get_token()
 
+    def get_features(self, target="select"):
+        get_features(self, target=target)
+
 
 Spotify.get_token = get_token
 Spotify.search_tracks = search_tracks
 Spotify.get_genres = get_genres
-Spotify.get_features = get_features
 Spotify.get_reco_tracks = get_reco_tracks
